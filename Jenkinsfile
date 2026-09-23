@@ -11,7 +11,6 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Compiling app.py...'
-                // Simulating compilation check
                 bat 'python -m py_compile app.py'
                 
                 echo 'Waiting 15 seconds...'
@@ -30,13 +29,12 @@ pipeline {
                     def mailBody = "The build finished successfully. Review details here: ${env.BUILD_URL}"
                     
                     try {
-                        // Attempt standard SMTP notification
                         mail to: recipient,
                              subject: mailSubject,
                              body: mailBody
                         echo "Notification email sent successfully to ${recipient}."
                     } catch (Exception e) {
-                        // Workaround fallback if SMTP server setup is missing
+
                         echo "[SMTP Workaround Log Alert]"
                         echo "To: ${recipient}"
                         echo "Subject: ${mailSubject}"
