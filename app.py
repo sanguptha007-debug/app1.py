@@ -1,5 +1,10 @@
-def add(a, b):
-    return a + b
+import sys
 
-def subtract(a, b):
-    return a - b
+def main():
+    print("Initializing application compilation check...")
+    
+    # INTENTIONAL SYNTAX ERROR: Missing closing parenthesis below
+    print("Breaking the build on purpose"
+
+if __name__ == "__main__":
+    main()
